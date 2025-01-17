@@ -51,6 +51,7 @@
             // pbWeatherStatus
             // 
             pbWeatherStatus.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            pbWeatherStatus.BackColor = SystemColors.AppWorkspace;
             pbWeatherStatus.BorderStyle = BorderStyle.Fixed3D;
             pbWeatherStatus.Location = new Point(663, 316);
             pbWeatherStatus.Name = "pbWeatherStatus";

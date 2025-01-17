@@ -31,7 +31,7 @@ namespace BestWeatherSource
         {
             Regex hrefWeatherValue = new Regex(@"Текущая температура ([+-]?\d+°)");
             Regex hrefWeatherValueSence = new Regex(@"Ощущается как ([+-]?\d+°)");
-            Regex hrefWeatherPicture = new Regex(@"<img class=""icon icon_color_light icon_size_48 icon_thumb_bkn-n fact__icon"" aria-hidden=""true"" src=""([^""]+)""");
+            Regex hrefWeatherPicture = new Regex(@"<img class=""icon icon_color_light icon_size_48[ a-z0-9\-_]*"" aria-hidden=""true"" src=""([^""]+)""");
             HttpClient client = new HttpClient();
             while (true)
             {
@@ -44,7 +44,7 @@ namespace BestWeatherSource
 
                 Match imageSourceMatch = Regex.Match(html, hrefWeatherPicture.ToString());
                 string imageSource = "https:" + imageSourceMatch.Groups[1].Value;
-                imageSource = "https://yastatic.net/weather/i/icons/confident/light/svg/bkn_n.svg";
+                //imageSource = "https://yastatic.net/weather/i/icons/confident/light/svg/bkn_n.svg";
 
                 var imageBytes = await client.GetByteArrayAsync(imageSource);
                 using (var ms = new MemoryStream(imageBytes))
